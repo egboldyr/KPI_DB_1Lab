@@ -3,6 +3,8 @@ package dao;
 import entity.Student;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JDBCStudentDAOImp implements StudentDAO {
 
@@ -24,5 +26,29 @@ public class JDBCStudentDAOImp implements StudentDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Student> getStudentsByGroupId(Integer groupId) {
+        List<Student> students = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, pass)) {
+            PreparedStatement st =
+                    conn.prepareStatement("SELECT * FROM STUDENTS WHERE GROUP_ID = ?");
+            st.setInt(1, groupId);
+
+            ResultSet res = st.executeQuery();
+            while (res.next()) {
+                students.add(new Student(
+                        res.getInt(1),
+                        res.getInt(2),
+                        res.getString(3),
+                        res.getString(4),
+                        res.getInt(5)
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return students;
     }
 }
