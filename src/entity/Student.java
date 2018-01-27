@@ -15,6 +15,14 @@ public class Student {
         this.age = age;
     }
 
+    public Student(Integer id, Integer groupId, String name, String surname, Integer age) {
+        this.id = id;
+        this.groupId = groupId;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
+
     public Integer getId() {
         return id;
     }
