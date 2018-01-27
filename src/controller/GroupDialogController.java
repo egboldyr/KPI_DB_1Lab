@@ -14,6 +14,7 @@ import service.GroupServiceImp;
 public class GroupDialogController {
 
     private ObservableList<Group> groups;
+    private Group currentGroup;
     private GroupService service;
 
     @FXML private TextField fldGroupName;
@@ -29,5 +30,34 @@ public class GroupDialogController {
         clnGroupId.setCellValueFactory(new PropertyValueFactory<Group, Integer>("id"));
         clnGroupName.setCellValueFactory(new PropertyValueFactory<Group, String>("name"));
         tblGroups.setItems(groups);
+    }
+
+    @FXML
+    private void onSelectedGroup() {
+        currentGroup = tblGroups.getSelectionModel().getSelectedItem();
+        fldGroupName.setText(currentGroup.getName());
+    }
+
+    @FXML
+    private void newGroupButtonOnClick() {
+        groups.add(service.create(fldGroupName.getText()));
+        tblGroups.refresh(); fldGroupName.clear();
+    }
+
+    @FXML
+    private void updateGroupButtonOnClick() {
+        if (currentGroup != null) {
+            currentGroup.setName(fldGroupName.getText());
+            service.update(currentGroup);
+        }
+        tblGroups.refresh(); fldGroupName.clear();
+    }
+
+    @FXML
+    private void deleteGroupButtonOnClick() {
+        if (currentGroup != null) {
+            service.delete(currentGroup);
+            groups.remove(currentGroup);
+        }
     }
 }
