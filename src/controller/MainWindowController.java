@@ -17,6 +17,8 @@ import service.GroupServiceImp;
 
 import java.io.IOException;
 
+/**/
+
 public class MainWindowController {
 
     private ObservableList<Group> groups;
