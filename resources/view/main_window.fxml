@@ -42,10 +42,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New Student" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#newStudentButtonOnClick" text="New Student" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit Student" GridPane.columnIndex="1" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete Student" GridPane.rowIndex="1" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exitButtonOnClick" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
