@@ -15,13 +15,20 @@ public class GroupServiceImp implements GroupService {
     }
 
     @Override
-    public void create(Group group) {
+    public Group create(String groupName) {
+        Group group = new Group(groupName);
+        groupDAO.create(group);
+        return group;
+    }
 
+    @Override
+    public void update(Group group) {
+        groupDAO.update(group);
     }
 
     @Override
     public void delete(Group group) {
-
+        groupDAO.delete(group);
     }
 
     @Override

@@ -10,14 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import service.GroupService;
 import service.GroupServiceImp;
 
 import java.io.IOException;
-
-/**/
 
 public class MainWindowController {
 
@@ -47,7 +46,29 @@ public class MainWindowController {
         dlgGroups.setResizable(false);
         dlgGroups.initModality(Modality.WINDOW_MODAL);
         dlgGroups.initOwner(wdMain.getScene().getWindow());
+        dlgGroups.setOnCloseRequest((event) -> {
+            groups.setAll(groupService.getAllGroups());
+            lstGroups.refresh();
+        });
         dlgGroups.setScene(new Scene(vwGroups));
         dlgGroups.showAndWait();
+    }
+
+    @FXML
+    private void newStudentButtonOnClick() throws IOException {
+        Stage dlgNewStudent = new Stage();
+        GridPane vwStudent = FXMLLoader.load(getClass().getResource("/view/student_dialog.fxml"));
+
+        dlgNewStudent.setTitle("New Student - Dialog");
+        dlgNewStudent.setResizable(false);
+        dlgNewStudent.initModality(Modality.WINDOW_MODAL);
+        dlgNewStudent.initOwner(wdMain.getScene().getWindow());
+        dlgNewStudent.setScene(new Scene(vwStudent));
+        dlgNewStudent.showAndWait();
+    }
+
+    @FXML
+    private void exitButtonOnClick() {
+        System.exit(0);
     }
 }

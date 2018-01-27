@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface GroupService {
 
-    void create(Group group);
+    Group create(String groupName);
+
+    void update(Group group);
 
     void delete(Group group);
 
