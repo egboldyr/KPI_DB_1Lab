@@ -21,6 +21,13 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
+    public void delete(Student student) {
+        if (student != null) {
+            dao.delete(student);
+        }
+    }
+
+    @Override
     public List<Student> getGroupStudents(Group group) {
         return dao.getStudentsByGroupId(group.getId());
     }

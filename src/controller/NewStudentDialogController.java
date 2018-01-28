@@ -38,14 +38,13 @@ public class NewStudentDialogController {
 
     @FXML
     private void onSaveButtonClick() {
-        Stage dlg = (Stage) wdStudentDialog.getScene().getWindow();
         Group selectedGroup = chbGroup.getSelectionModel().getSelectedItem();
         srvStudents.create(
                 selectedGroup.getId(),
                 fldName.getText(),
                 fldSurname.getText(),
                 Integer.parseInt(fldAge.getText()));
-        dlg.close();
+        fldName.clear(); fldSurname.clear(); fldAge.clear();
     }
 
     @FXML

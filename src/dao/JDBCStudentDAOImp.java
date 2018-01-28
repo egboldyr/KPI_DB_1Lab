@@ -29,6 +29,20 @@ public class JDBCStudentDAOImp implements StudentDAO {
     }
 
     @Override
+    public boolean delete(Student student) {
+        try (Connection conn = DriverManager.getConnection(url, user, pass)) {
+            PreparedStatement st =
+                    conn.prepareStatement("DELETE FROM STUDENTS WHERE ID = ?");
+            st.setInt(1, student.getId());
+            st.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
     public List<Student> getStudentsByGroupId(Integer groupId) {
         List<Student> students = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, pass)) {

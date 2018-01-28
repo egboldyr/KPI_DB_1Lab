@@ -14,7 +14,7 @@
                   <Insets bottom="5.0" />
                </padding></ListView>
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#newGroupButtonOnClick" text="New Group" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete Group" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteGroupButtonOnClick" text="Delete Group" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -43,8 +43,8 @@
               </rowConstraints>
                <children>
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#newStudentButtonOnClick" text="New Student" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit Student" GridPane.columnIndex="1" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete Student" GridPane.rowIndex="1" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#findButtonOnClick" text="Find" GridPane.columnIndex="1" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteStudentButtonOnClick" text="Delete Student" GridPane.rowIndex="1" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exitButtonOnClick" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>

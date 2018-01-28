@@ -79,6 +79,18 @@ public class MainWindowController {
     }
 
     @FXML
+    private void deleteGroupButtonOnClick() {
+        Group currentGroup = lstGroups.getSelectionModel().getSelectedItem();
+        groupService.delete(currentGroup);
+        groups.remove(currentGroup);
+    }
+
+    @FXML
+    private void findButtonOnClick() {
+
+    }
+
+    @FXML
     private void newStudentButtonOnClick() throws IOException {
         Stage dlgNewStudent = new Stage();
         GridPane vwStudent = FXMLLoader.load(getClass().getResource("/view/student_dialog.fxml"));
@@ -98,6 +110,15 @@ public class MainWindowController {
         });
         dlgNewStudent.setScene(new Scene(vwStudent));
         dlgNewStudent.showAndWait();
+    }
+
+    @FXML
+    private void deleteStudentButtonOnClick() {
+        Student student =
+                tblStudents.getSelectionModel().getSelectedItem();
+        studentService.delete(student);
+        students.remove(student);
+        tblStudents.refresh();
     }
 
     @FXML
