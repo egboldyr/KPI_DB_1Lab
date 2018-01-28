@@ -8,13 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import service.GroupService;
 import service.GroupServiceImp;
+import service.StudentService;
+import service.StudentServiceImp;
 
 import java.io.IOException;
 
@@ -23,10 +27,16 @@ public class MainWindowController {
     private ObservableList<Group> groups;
     private GroupService groupService;
     private ObservableList<Student> students;
+    private StudentService studentService;
 
     @FXML private BorderPane wdMain;
     @FXML private ListView<Group> lstGroups;
     @FXML private TableView<Student> tblStudents;
+
+    @FXML private TableColumn<Student, Integer> clnStudentId;
+    @FXML private TableColumn<Student, String> clnStudentName;
+    @FXML private TableColumn<Student, String> clnStudentSurname;
+    @FXML private TableColumn<Student, Integer> clnStudentAge;
 
     @FXML
     private void initialize() {
@@ -34,7 +44,21 @@ public class MainWindowController {
         groups = FXCollections.observableArrayList(groupService.getAllGroups());
         lstGroups.setItems(groups);
 
+        studentService = new StudentServiceImp();
         students = FXCollections.observableArrayList();
+        clnStudentId.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
+        clnStudentName.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
+        clnStudentSurname.setCellValueFactory(new PropertyValueFactory<Student, String>("surname"));
+        clnStudentAge.setCellValueFactory(new PropertyValueFactory<Student, Integer>("age"));
+        tblStudents.setItems(students);
+    }
+
+    @FXML
+    private void selectGroupOnClick() {
+        students.setAll(
+                studentService.getGroupStudents(
+                        lstGroups.getSelectionModel().getSelectedItem()));
+        tblStudents.refresh();
     }
 
     @FXML

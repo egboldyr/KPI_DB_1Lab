@@ -16,8 +16,6 @@ import service.StudentServiceImp;
 
 public class NewStudentDialogController {
 
-    private Stage dlg;
-
     private ObservableList<Group> groups;
     private GroupService srvGroups;
     private StudentService srvStudents;
@@ -31,8 +29,6 @@ public class NewStudentDialogController {
 
     @FXML
     private void initialize() {
-        dlg = (Stage) wdStudentDialog.getScene().getWindow();
-
         srvGroups = new GroupServiceImp();
         srvStudents = new StudentServiceImp();
 
@@ -42,6 +38,7 @@ public class NewStudentDialogController {
 
     @FXML
     private void onSaveButtonClick() {
+        Stage dlg = (Stage) wdStudentDialog.getScene().getWindow();
         Group selectedGroup = chbGroup.getSelectionModel().getSelectedItem();
         srvStudents.create(
                 selectedGroup.getId(),
@@ -53,6 +50,7 @@ public class NewStudentDialogController {
 
     @FXML
     private void onCancelButtonClick() {
+        Stage dlg = (Stage) wdStudentDialog.getScene().getWindow();
         dlg.close();
     }
 }
