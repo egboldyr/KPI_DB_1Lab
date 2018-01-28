@@ -87,6 +87,15 @@ public class MainWindowController {
         dlgNewStudent.setResizable(false);
         dlgNewStudent.initModality(Modality.WINDOW_MODAL);
         dlgNewStudent.initOwner(wdMain.getScene().getWindow());
+        dlgNewStudent.setOnCloseRequest((event) -> {
+            Group group = lstGroups.getSelectionModel().getSelectedItem();
+            if (group != null) {
+                students.setAll(
+                        studentService.getGroupStudents(
+                                lstGroups.getSelectionModel().getSelectedItem()));
+                tblStudents.refresh();
+            }
+        });
         dlgNewStudent.setScene(new Scene(vwStudent));
         dlgNewStudent.showAndWait();
     }

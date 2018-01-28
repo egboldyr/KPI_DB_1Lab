@@ -9,7 +9,7 @@
    <left>
       <VBox prefHeight="400.0" prefWidth="188.0" spacing="7.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="lstGroups" prefHeight="339.0" prefWidth="178.0">
+            <ListView fx:id="lstGroups" onMouseClicked="#selectGroupOnClick" prefHeight="339.0" prefWidth="178.0">
                <padding>
                   <Insets bottom="5.0" />
                </padding></ListView>
@@ -26,10 +26,10 @@
          <children>
             <TableView fx:id="tblStudents" prefHeight="342.0" prefWidth="402.0">
               <columns>
-                <TableColumn prefWidth="101.0" text="STUDENT_ID" />
-                <TableColumn prefWidth="107.0" text="NAME" />
-                  <TableColumn prefWidth="98.0" text="SURNAME" />
-                  <TableColumn prefWidth="93.0" text="AGE" />
+                <TableColumn fx:id="clnStudentId" prefWidth="101.0" text="STUDENT_ID" />
+                <TableColumn fx:id="clnStudentName" prefWidth="107.0" text="NAME" />
+                  <TableColumn fx:id="clnStudentSurname" prefWidth="98.0" text="SURNAME" />
+                  <TableColumn fx:id="clnStudentAge" prefWidth="93.0" text="AGE" />
               </columns>
             </TableView>
             <GridPane hgap="5.0" vgap="5.0">
