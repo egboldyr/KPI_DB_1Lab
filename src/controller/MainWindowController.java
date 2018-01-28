@@ -86,8 +86,15 @@ public class MainWindowController {
     }
 
     @FXML
-    private void findButtonOnClick() {
+    private void findButtonOnClick() throws IOException {
+        Stage wdwFind = new Stage();
+        BorderPane vwFindResults = FXMLLoader.load(getClass().getResource("/view/find_dialog.fxml"));
 
+        wdwFind.setTitle("Find Results");
+        wdwFind.setResizable(false);
+        wdwFind.initModality(Modality.NONE);
+        wdwFind.setScene(new Scene(vwFindResults));
+        wdwFind.show();
     }
 
     @FXML

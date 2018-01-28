@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="541.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FindWindowController">
+   <center>
+      <TableView fx:id="tblStudents" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="clnStudentId" prefWidth="111.0" text="STUDENT_ID" />
+          <TableColumn fx:id="clnGroupId" prefWidth="121.0" text="GROUP_ID" />
+            <TableColumn fx:id="clnName" prefWidth="106.0" text="NAME" />
+            <TableColumn fx:id="clnSurname" prefWidth="126.0" text="SURNAME" />
+            <TableColumn fx:id="clnAge" prefWidth="65.0" text="AGE" />
+        </columns>
+      </TableView>
+   </center>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</BorderPane>
