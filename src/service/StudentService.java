@@ -13,4 +13,6 @@ public interface StudentService {
 
     List<Student> getGroupStudents(Group group);
 
+    List<Student> getYoungStudentsInGroups();
+
 }

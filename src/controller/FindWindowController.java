@@ -26,7 +26,8 @@ public class FindWindowController {
     @FXML
     private void initialize() {
         studentService = new StudentServiceImp();
-        students = FXCollections.observableArrayList(studentService.getYoungStudentsInGroups());
+        students = FXCollections.observableArrayList();
+        students.setAll(studentService.getYoungStudentsInGroups());
 
         clnStudentId.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
         clnGroupId.setCellValueFactory(new PropertyValueFactory<Student, Integer>("groupId"));
